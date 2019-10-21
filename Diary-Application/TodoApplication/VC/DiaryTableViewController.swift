@@ -26,6 +26,7 @@ class DiaryTableViewController: UITableViewController, UISearchDisplayDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
         searchBar.delegate = self
         
         loadData()

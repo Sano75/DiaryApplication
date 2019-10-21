@@ -50,6 +50,7 @@ class AddDiaryViewController: UIViewController, UINavigationBarDelegate, UIImage
         super.viewDidLoad()
         imgPicker.delegate = self
         checkLocServ()
+        self.hideKeyboardWhenTappedAround()
         
         
         // Do any additional setup after loading the view.
@@ -302,5 +303,17 @@ extension AddDiaryViewController: MKMapViewDelegate {
                 
             }
         }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
